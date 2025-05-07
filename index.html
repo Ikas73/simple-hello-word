@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="¡Hola Mundo Espectacular! Diseño moderno con animaciones 3D, efecto neon y estilo único."
+    />
+    <title>¡Hola Mundo Espectacular! | Por Amós & Qwen3</title>
+
+    <!-- Fuentes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos (Font Awesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Nota: El script de Font Awesome que tenías era v5. He cambiado a un enlace CSS de v6 que es más común ahora. -->
+
+    <style>
+      /* Reset básico */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 16px; /* Base font size for rem calculation */
+        scroll-behavior: smooth;
+      }
+
+      body {
+        height: 100%;
+        font-family: "Roboto Mono", monospace;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-y: auto; /* Allow vertical scroll if content grows */
+        background: #0d0d0d;
+        color: #fff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Ensure body takes at least full viewport height */
+      }
+
+      /* Canvas de partículas */
+      #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+      }
+
+      /* ============================ */
+      /* MOBILE FIRST STYLES          */
+      /* ============================ */
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 1.5rem; /* Adjusted padding for mobile */
+        background: rgba(0, 0, 0, 0.8); /* Slightly increased opacity */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(8px); /* Slightly reduced blur */
+        z-index: 100; /* Ensure header is on top */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle bottom border */
+      }
+
+      .logo {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.3rem; /* Slightly smaller for mobile */
+        color: #00ffcc;
+        text-shadow: 0 0 8px #00ffcc;
+        z-index: 101; /* Ensure logo is above mobile nav when closed */
+      }
+
+      /* Hamburger Menu Toggle Button */
+      #menu-toggle {
+        display: block; /* Show toggle on mobile */
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 101; /* Ensure toggle is clickable */
+        padding: 0.5rem; /* Add padding for easier tapping */
+        margin-right: -0.5rem; /* Align edge visually */
+      }
+      #menu-toggle:hover {
+        color: #00ffcc;
+      }
+
+      /* Navigation Menu (Mobile State) */
+      #main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75%; /* Adjust width as needed */
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.95); /* Darker, less transparent bg */
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-100%); /* Hidden off-screen by default */
+        transition: transform 0.3s ease-in-out;
+        z-index: 99; /* Below header elements but above content */
+        padding-top: 4rem; /* Space for header */
+      }
+
+      #main-nav.nav-active {
+        transform: translateX(0); /* Slide in when active */
+      }
+
+      #main-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        padding: 1.5rem 0; /* More vertical space */
+        width: 100%;
+        text-align: center;
+        display: block; /* Make links take full width */
+        margin-left: 0; /* Reset desktop margin */
+        transition: color 0.3s, background-color 0.3s;
+      }
+
+      #main-nav a:hover {
+        color: #00ffcc;
+        background-color: rgba(0, 255, 204, 0.1);
+      }
+
+      /* Contenido principal */
+      main {
+        text-align: center;
+        padding: 6rem 1.5rem 4rem; /* Adjust padding top/bottom for fixed header/footer */
+        z-index: 2;
+        flex-grow: 1; /* Allow main to grow and push footer down */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        /* clamp(MIN, PREFERRED, MAX) */
+        font-size: clamp(
+          2rem,
+          10vw,
+          3.5rem
+        ); /* Adjusted clamp for better mobile range */
+        color: #00ffcc;
+        text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+        animation: pulse 2s infinite;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 1rem; /* Smaller base font size */
+        color: #ccc;
+        margin-bottom: 2rem;
+        text-shadow: 0 0 8px #000;
+        max-width: 600px; /* Limit width for readability */
+        line-height: 1.5;
+      }
+
+      .cta-btn {
+        background: #00ffcc;
+        color: #000;
+        border: none;
+        padding: 0.8rem 2rem; /* Adjusted padding */
+        font-size: 0.9rem; /* Adjusted font size */
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 0 15px #00ffcc;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: inline-block; /* Ensure it behaves like a button */
+        margin-top: 1rem; /* Add some space above */
+      }
+
+      .cta-btn:hover {
+        transform: scale(1.05); /* Slightly less aggressive scale */
+        box-shadow: 0 0 25px #00ffcc;
+      }
+
+      /* Footer */
+      footer {
+        position: fixed; /* Keep fixed for this design */
+        bottom: 0;
+        width: 100%;
+        padding: 0.8rem 1.5rem; /* Adjusted padding */
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column; /* Stack elements on mobile */
+        align-items: center; /* Center items */
+        font-size: 0.8rem; /* Smaller font size */
+        z-index: 10;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle top border */
+      }
+
+      .signature {
+        color: #00ffcc;
+        font-weight: bold;
+        margin-bottom: 0.5rem; /* Space between signature and socials */
+      }
+
+      .socials a {
+        color: #fff;
+        margin: 0 0.7rem; /* Horizontal margin for mobile */
+        text-decoration: none;
+        font-size: 1.1rem; /* Slightly smaller icons */
+        transition: color 0.3s;
+      }
+
+      .socials a:hover {
+        color: #00ffcc;
+      }
+
+      /* Animaciones */
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+        }
+        50% {
+          opacity: 0.7;
+          text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+        }
+      }
+
+      /* ============================ */
+      /* DESKTOP STYLES (TABLET+)   */
+      /* ============================ */
+      @media (min-width: 768px) {
+        html {
+          font-size: 17px; /* Slightly larger base font for desktop */
+        }
+
+        body {
+          overflow-y: hidden; /* Re-hide scrollbar if not needed on desktop */
+        }
+
+        header {
+          padding: 1rem 2rem; /* Restore original padding */
+        }
+
+        .logo {
+          font-size: 1.5rem; /* Restore original size */
+          text-shadow: 0 0 10px #00ffcc;
+        }
+
+        /* Hide hamburger toggle on desktop */
+        #menu-toggle {
+          display: none;
+        }
+
+        /* Restore Desktop Navigation */
+        #main-nav {
+          position: static; /* Back to normal flow */
+          transform: none; /* Remove transform */
+          width: auto; /* Auto width */
+          height: auto; /* Auto height */
+          background: none;
+          backdrop-filter: none;
+          flex-direction: row; /* Align links horizontally */
+          justify-content: flex-end;
+          padding-top: 0; /* Remove mobile padding */
+          transition: none; /* No transition needed for static elements */
+        }
+
+        #main-nav a {
+          margin-left: 2rem; /* Restore left margin */
+          font-size: 0.8rem; /* Restore original font size */
+          padding: 0.5rem 0; /* Adjust padding if needed */
+          width: auto; /* Auto width */
+          display: inline-block; /* Display inline */
+          text-align: left; /* Reset text align */
+        }
+        #main-nav a:hover {
+          background-color: transparent; /* Remove hover background */
+          color: #00ffcc; /* Keep hover color */
+        }
+
+        main {
+          padding: 8rem 2rem 5rem; /* Adjust padding */
+        }
+
+        h1 {
+          font-size: clamp(
+            3rem,
+            8vw,
+            5rem
+          ); /* Restore or adjust desktop clamp */
+          text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+        }
+
+        .subtitle {
+          font-size: 1.2rem; /* Restore desktop size */
+        }
+
+        .cta-btn {
+          padding: 1rem 2.5rem; /* Restore desktop padding */
+          font-size: 1rem; /* Restore desktop font size */
+        }
+
+        footer {
+          padding: 1rem 2rem; /* Restore desktop padding */
+          flex-direction: row; /* Layout horizontally */
+          justify-content: space-between; /* Space out elements */
+          font-size: 0.9rem; /* Restore desktop font size */
+          text-align: left;
+        }
+
+        .signature {
+          margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        .socials a {
+          margin: 0 0 0 1rem; /* Only left margin */
+          font-size: 1.2rem; /* Restore icon size */
+        }
+      }
+
+      /* Optional: Larger desktop styles */
+      @media (min-width: 1200px) {
+        h1 {
+          font-size: clamp(
+            4rem,
+            8vw,
+            4.5rem
+          ); /* Even larger on very wide screens */
+        }
+        /* Add any other adjustments for very large screens */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Canvas de partículas -->
+    <div id="particle-canvas"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">AmósLab</div>
+      <!-- Hamburger Button -->
+      <button
+        id="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navigation -->
+      <nav id="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+      <h1>¡Hola Mundo Espectacular!</h1>
+      <p class="subtitle">
+        Diseño moderno, animaciones dinámicas y un toque de magia digital.
+      </p>
+      <button class="cta-btn">Descubre más</button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="signature">© 2025 Amós | Hecho con ❤️</div>
+      <div class="socials">
+        <a
+          href="https://github.com/EstudiaGit"
+          target="_blank"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:contacto@amoslab.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Carga de Three.js como módulo ESM -->
+    <script type="module">
+      // Cargar Three.js y hacerlo global (opcional)
+      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.min.js";
+      window.THREE = THREE; // Asignamos globalmente para usar en otros scripts
+    </script>
+
+    <!-- Script principal de Three.js (sin cambios) -->
+    <script type="module">
+      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.min.js";
+
+      // Configuración de partículas 3D
+      const container = document.getElementById("particle-canvas");
+      if (container) {
+        // Check if element exists
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        }); // Added antialias
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Crear partículas
+        const particleCount = 500;
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+        const color = new THREE.Color(); // Reusable color object
+
+        for (let i = 0; i < particleCount; i++) {
+          positions.push((Math.random() - 0.5) * 10); // Reduced spread for closer particles initially
+          positions.push((Math.random() - 0.5) * 10);
+          positions.push((Math.random() - 0.5) * 10 - 5); // Push them back a bit
+
+          // Neon-like colors (cyan, magenta, lime)
+          const choice = Math.random();
+          if (choice < 0.33) {
+            color.setHex(0x00ffff); // Cyan
+          } else if (choice < 0.66) {
+            color.setHex(0xff00ff); // Magenta
+          } else {
+            color.setHex(0x00ff00); // Lime
+          }
+          colors.push(color.r, color.g, color.b);
+        }
+
+        geometry.setAttribute(
+          "position",
+          new THREE.Float32BufferAttribute(positions, 3)
+        );
+        geometry.setAttribute(
+          "color",
+          new THREE.Float32BufferAttribute(colors, 3)
+        );
+
+        const material = new THREE.PointsMaterial({
+          size: 0.05, // Smaller size for more definition
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.9,
+          blending: THREE.AdditiveBlending,
+          sizeAttenuation: true, // Points get smaller further away
+          depthWrite: false, // Helps with blending issues
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+        camera.position.z = 5; // Camera closer
+
+        // Variables for mouse interaction
+        let mouseX = 0,
+          mouseY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        // Animación de partículas
+        function animate() {
+          requestAnimationFrame(animate);
+
+          const time = Date.now() * 0.0005; // Slower time progression
+
+          // Gentle rotation independent of mouse
+          particles.rotation.y = time * 0.1;
+          // particles.rotation.x = time * 0.05;
+
+          // Smooth camera movement based on mouse
+          camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.02; // Reduced intensity, smoother lerp
+          camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.02;
+          camera.lookAt(scene.position); // Ensure camera always looks at the center
+
+          renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Respuesta al movimiento del mouse - Update mouseX/mouseY
+        function onDocumentMouseMove(event) {
+          mouseX = (event.clientX - windowHalfX) / windowHalfX; // Normalize between -1 and 1
+          mouseY = (event.clientY - windowHalfY) / windowHalfY; // Normalize between -1 and 1
+        }
+        document.addEventListener("mousemove", onDocumentMouseMove);
+
+        // Redimensionar
+        function onWindowResize() {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          windowHalfX = window.innerWidth / 2; // Update half width/height
+          windowHalfY = window.innerHeight / 2;
+        }
+        window.addEventListener("resize", onWindowResize);
+      } else {
+        console.error("Element with ID 'particle-canvas' not found.");
+      }
+    </script>
+
+    <!-- Script para el menú hamburguesa -->
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mainNav = document.getElementById("main-nav");
+      const navLinks = mainNav.querySelectorAll("a"); // Get all links in the nav
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+          const isExpanded =
+            menuToggle.getAttribute("aria-expanded") === "true";
+          mainNav.classList.toggle("nav-active");
+          menuToggle.setAttribute("aria-expanded", !isExpanded);
+          // Cambia el icono de hamburguesa a X y viceversa
+          const icon = menuToggle.querySelector("i");
+          if (mainNav.classList.contains("nav-active")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-times");
+          } else {
+            icon.classList.remove("fa-times");
+            icon.classList.add("fa-bars");
+          }
+        });
+
+        // Close menu when a link is clicked (useful for single-page anchor links)
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            if (mainNav.classList.contains("nav-active")) {
+              mainNav.classList.remove("nav-active");
+              menuToggle.setAttribute("aria-expanded", "false");
+              const icon = menuToggle.querySelector("i");
+              icon.classList.remove("fa-times");
+              icon.classList.add("fa-bars");
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
