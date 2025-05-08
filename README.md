@@ -69,9 +69,8 @@ Este proyecto va más allá de un simple saludo. Incorpora técnicas modernas de
 
 ## Créditos 🙏
 
-- Desarrollado por: **Amós** (¡Tú!)
-- Con la asistencia y colaboración de: **Qwen y Gemini(IA)**
-
+- Ejercicio realizado por: **Amós**
+  
 ## Licencia 📄
 
 Este proyecto se distribuye bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles (si decides añadir uno).
