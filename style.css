@@ -558,3 +558,31 @@ body.styles-activated .spaceship-icon::after {
     opacity: 1;
   }
 }
+#modal-image {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#modal-image img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 0 40px #00ffcc;
+}
+#close-modal-image {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}

@@ -62,6 +62,48 @@
         Bienvenido a una experiencia visual única.
       </p>
       <button class="cta-btn">Descubre más</button>
+      <button id="show-image-btn" class="cta-btn">Ver Imagen</button>
+      <div
+        id="modal-image"
+        style="
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.85);
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        "
+      >
+        <img
+          src="assets/images/imagen_1.jpg"
+          alt="Imagen"
+          style="
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 0 40px #00ffcc;
+          "
+        />
+        <button
+          id="close-modal-image"
+          style="
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+          "
+        >
+          &times;
+        </button>
+      </div>
       <button id="activate-styles-btn">Activar Estilos</button>
     </main>
     <footer>

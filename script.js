@@ -287,11 +287,32 @@ document.addEventListener("DOMContentLoaded", () => {
           initMenu();
           initTextAnimations();
           setupSpaceshipFeature();
+          setupShowImageButton();
         }, 50);
       },
       { once: true }
     );
   } else {
     console.error("Botón de activación #activate-styles-btn no encontrado.");
+  }
+
+  // --- Mostrar imagen en modal ---
+  function setupShowImageButton() {
+    const showImageBtn = document.getElementById("show-image-btn");
+    const modal = document.getElementById("modal-image");
+    const closeBtn = document.getElementById("close-modal-image");
+    if (showImageBtn && modal && closeBtn) {
+      showImageBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
   }
 });
