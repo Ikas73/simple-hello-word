@@ -63,45 +63,45 @@
       </p>
       <button class="cta-btn">Descubre más</button>
       <button id="show-image-btn" class="cta-btn">Ver Imagen</button>
-      <div
-        id="modal-image"
-        style="
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0.85);
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        "
-      >
-        <img
-          src="assets/images/imagen_1.png"
-          alt="Imagen"
-          style="
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 16px;
-            box-shadow: 0 0 40px #00ffcc;
-          "
-        />
+      <button id="show-comic-btn" class="cta-btn">Comic Estelar</button>
+      <div id="modal-image">
+        <div class="image-container">
+          <img src="assets/images/imagen_1.png" alt="Imagen 1" class="active" />
+          <img src="assets/images/imagen_2.png" alt="Imagen 2" />
+          <img src="assets/images/imagen_3.png" alt="Imagen 3" />
+        </div>
+        <button id="prev-image" class="nav-button" aria-label="Imagen anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
         <button
-          id="close-modal-image"
-          style="
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-          "
+          id="next-image"
+          class="nav-button"
+          aria-label="Siguiente imagen"
         >
-          &times;
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="close-modal-image" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="modal-comic">
+        <div class="image-container">
+          <img src="assets/comic/comic_1.png" alt="Comic 1" class="active" />
+          <img src="assets/comic/comic_2.png" alt="Comic 2" />
+          <img src="assets/comic/comic_3.png" alt="Comic 3" />
+          <img src="assets/comic/comic_4.png" alt="Comic 4" />
+          <img src="assets/comic/comic_5.png" alt="Comic 5" />
+          <img src="assets/comic/comic_6.png" alt="Comic 6" />
+          <img src="assets/comic/comic_7.png" alt="Comic 7" />
+        </div>
+        <button id="prev-comic" class="nav-button" aria-label="Comic anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="next-comic" class="nav-button" aria-label="Siguiente comic">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="close-modal-comic" aria-label="Cerrar">
+          <i class="fas fa-times"></i>
         </button>
       </div>
       <button id="activate-styles-btn">Activar Estilos</button>

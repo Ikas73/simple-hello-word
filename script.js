@@ -7,6 +7,82 @@ document.addEventListener("DOMContentLoaded", () => {
   let textAnimationsInitialized = false;
   let spaceshipFeatureInitialized = false;
 
+  // Función para manejar el carrusel de imágenes
+  function setupImageCarousel(
+    modalId,
+    prevBtnId,
+    nextBtnId,
+    closeBtnId,
+    showBtnId
+  ) {
+    const modal = document.getElementById(modalId);
+    const showBtn = document.getElementById(showBtnId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    const closeBtn = document.getElementById(closeBtnId);
+    const images = modal.querySelectorAll(".image-container img");
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((img) => img.classList.remove("active"));
+      currentIndex = ((index % images.length) + images.length) % images.length;
+      images[currentIndex].classList.add("active");
+    }
+
+    showBtn.addEventListener("click", () => {
+      currentIndex = 0;
+      showImage(currentIndex);
+      modal.classList.add("active");
+      document.body.classList.add("modal-open");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
+    });
+
+    prevBtn.addEventListener("click", () => {
+      showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      showImage(currentIndex + 1);
+    });
+
+    // Cerrar al hacer clic fuera
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+      }
+    });
+
+    // Evitar cerrar al hacer clic en la imagen
+    modal.querySelector(".image-container").addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    // Navegación por teclado
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("active")) return;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          e.preventDefault();
+          showImage(currentIndex - 1);
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          showImage(currentIndex + 1);
+          break;
+        case "Escape":
+          modal.classList.remove("active");
+          document.body.classList.remove("modal-open");
+          break;
+      }
+    });
+  }
+
   // --- Funciones para inicializar características ---
 
   function initThreeJS() {
@@ -282,37 +358,34 @@ document.addEventListener("DOMContentLoaded", () => {
         stylesActivated = true;
         console.log("Activando estilos y características...");
         document.body.classList.add("styles-activated");
+
+        // Inicializar todo
         setTimeout(() => {
           initThreeJS();
           initMenu();
           initTextAnimations();
           setupSpaceshipFeature();
-          setupShowImageButton();
+
+          // Inicializar carruseles
+          setupImageCarousel(
+            "modal-image",
+            "prev-image",
+            "next-image",
+            "close-modal-image",
+            "show-image-btn"
+          );
+          setupImageCarousel(
+            "modal-comic",
+            "prev-comic",
+            "next-comic",
+            "close-modal-comic",
+            "show-comic-btn"
+          );
         }, 50);
       },
       { once: true }
     );
   } else {
     console.error("Botón de activación #activate-styles-btn no encontrado.");
-  }
-
-  // --- Mostrar imagen en modal ---
-  function setupShowImageButton() {
-    const showImageBtn = document.getElementById("show-image-btn");
-    const modal = document.getElementById("modal-image");
-    const closeBtn = document.getElementById("close-modal-image");
-    if (showImageBtn && modal && closeBtn) {
-      showImageBtn.addEventListener("click", () => {
-        modal.style.display = "flex";
-      });
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-    }
   }
 });
