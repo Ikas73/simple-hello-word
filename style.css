@@ -49,12 +49,33 @@ p.subtitle {
   margin: 0 auto 1.5rem auto;
   line-height: 1.5;
 }
+/* 1) Asegúrate de que .subtitle esté visible y en bloque */
+.subtitle {
+  display: block !important; /* fuerza el block si hay otro display:none */
+  text-align: center; /* centra el texto */
+  white-space: pre-wrap; /* respeta saltos de línea y múltiples espacios */
+  margin: 1em auto; /* opcional: separa del resto y centra el contenedor */
+}
+
+/* 2) Tu regla para .word-animated (igual que la tenías) */
 .subtitle .word-animated {
   opacity: 1;
   transform: none;
   transition: none;
   display: inline;
 }
+
+/* 3) Solo oculta los selectores que quieras, sin que .subtitle se vea afectado */
+/*    Asegúrate de que tu regla no tenga un selector tan genérico que arrastre .subtitle. */
+#particle-canvas,
+header,
+footer,
+.cta-btn,
+#main-nav,
+#menu-toggle {
+  display: none;
+}
+
 #particle-canvas,
 header,
 footer,
