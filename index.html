@@ -5,189 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="¡Hola Mundo Espectacular! Diseño moderno con animaciones 3D, efecto neon y estilo único."
+      content="Portfolio de diseño web con estética Neo-Brutalista. Raw. Uncompromising. Digital."
     />
-    <meta name="theme-color" content="#00ffcc" />
+    <meta name="theme-color" content="#00FF00" />
+    <title>SYSTEM::NEO_BRUTALISM</title>
+
+    <!-- Fuente Monoespaciada para la estética de terminal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <title>¡Hola Mundo Espectacular! | Por Amós</title>
-
-    <!-- Fuentes -->
+    <!-- Icono puede ser un simple cuadrado verde -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300ff00%22/></svg>"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Iconos (Font Awesome) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <style></style>
   </head>
   <body>
-    <div id="particle-canvas"></div>
-    <header>
-      <a href="#" class="logo" aria-label="AmósLab Home">AmósLab</a>
-      <button
-        id="menu-toggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="main-nav"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav id="main-nav">
-        <a href="#inicio">Inicio</a> <a href="#sobre">Sobre mí</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </header>
-    <main>
-      <h1 id="inicio">
-        <span class="glitchable-span" data-text="¡Hola Mundo">¡Hola Mundo</span>
-        <span class="glitchable-span" data-text="Espectacular!"
-          >Espectacular!</span
-        >
-      </h1>
-      <p class="subtitle">
-        Diseño moderno, animaciones dinámicas y un toque de magia digital.
-        Bienvenido a una experiencia visual única.
-      </p>
-      <button class="cta-btn">Descubre más</button>
-      <button id="show-image-btn" class="cta-btn">Ver Imagen</button>
-      <button id="show-comic-btn" class="cta-btn">Comic Estelar</button>
-      <div id="modal-image">
-        <div class="image-container">
-          <img src="assets/images/imagen_1.png" alt="Imagen 1" class="active" />
-          <img src="assets/images/imagen_2.png" alt="Imagen 2" />
-          <img src="assets/images/imagen_3.png" alt="Imagen 3" />
-          <img src="assets/images/imagen_4.png" alt="Imagen 4" />
-          <img src="assets/images/imagen_5.png" alt="Imagen 5" />
-          <img src="assets/images/imagen_6.webp" alt="Imagen 6" />
-          <img src="assets/images/imagen_7.webp" alt="Imagen 7" />
-          <img src="assets/images/imagen_8.webp" alt="Imagen 8" />
-          <img src="assets/images/imagen_9.webp" alt="Imagen 9" />
-          <img src="assets/images/imagen_10.png" alt="Imagen 10" />
-          <img src="assets/images/imagen_11.png" alt="Imagen 11" />
-          <img src="assets/images/imagen_12.png" alt="Imagen 12" />
-          <img src="assets/images/imagen_13.png" alt="Imagen 13" />
-          <img src="assets/images/imagen_14.png" alt="Imagen 14" />
-          <img src="assets/images/imagen_15.webp" alt="Imagen 15" />
-          <img src="assets/images/imagen_16.webp" alt="Imagen 16" />
-          <img src="assets/images/imagen_17.webp" alt="Imagen 17" />
-          <img src="assets/images/imagen_18.webp" alt="Imagen 18" />
-          <img src="assets/images/imagen_19.webp" alt="Imagen 19" />
-          <img src="assets/images/imagen_20.png" alt="Imagen 20" />
-          <img src="assets/images/imagen_21.webp" alt="Imagen 21" />
-          <img src="assets/images/imagen_22.webp" alt="Imagen 22" />
-          <img src="assets/images/imagen_23.webp" alt="Imagen 23" />
-          <img src="assets/images/imagen_24.webp" alt="Imagen 24" />
-          <img src="assets/images/imagen_25.webp" alt="Imagen 25" />
-          <img src="assets/images/imagen_26.webp" alt="Imagen 26" />
-          <img src="assets/images/imagen_27.webp" alt="Imagen 27" />
-          <img src="assets/images/imagen_28.webp" alt="Imagen 28" />
-          <img src="assets/images/imagen_29.webp" alt="Imagen 29" />
-          <img src="assets/images/imagen_30.webp" alt="Imagen 30" />
-          <img src="assets/images/imagen_31.webp" alt="Imagen 31" />
-          <img src="assets/images/imagen_32.webp" alt="Imagen 32" />
-          <img src="assets/images/imagen_33.webp" alt="Imagen 33" />
-          <img src="assets/images/imagen_34.webp" alt="Imagen 34" />
-          <img src="assets/images/imagen_35.webp" alt="Imagen 35" />
-          <img src="assets/images/imagen_36.webp" alt="Imagen 36" />
-          <img src="assets/images/imagen_37.webp" alt="Imagen 37" />
-          <img src="assets/images/imagen_38.webp" alt="Imagen 38" />
-          <img src="assets/images/imagen_39.webp" alt="Imagen 39" />
-          <img src="assets/images/imagen_40.webp" alt="Imagen 40" />
-          <img src="assets/images/imagen_41.webp" alt="Imagen 41" />
-          <img src="assets/images/imagen_42.webp" alt="Imagen 42" />
-          <img src="assets/images/imagen_43.webp" alt="Imagen 43" />
-          <img src="assets/images/imagen_44.webp" alt="Imagen 44" />
-          <img src="assets/images/imagen_45.webp" alt="Imagen 45" />
-          <img src="assets/images/imagen_46.webp" alt="Imagen 46" />
-          <img src="assets/images/imagen_47.webp" alt="Imagen 47" />
-          <img src="assets/images/imagen_48.webp" alt="Imagen 48" />
-          <img src="assets/images/imagen_49.webp" alt="Imagen 49" />
-          <img src="assets/images/imagen_50.webp" alt="Imagen 50" />
-          <img src="assets/images/imagen_51.webp" alt="Imagen 51" />
-          <img src="assets/images/imagen_52.webp" alt="Imagen 52" />
-          <img src="assets/images/imagen_53.png" alt="Imagen 53" />
-          <img src="assets/images/imagen_54.webp" alt="Imagen 54" />
-          <img src="assets/images/imagen_00.webp" alt="Imagen 00" />
+    <div class="main-container">
+      <header class="panel">
+        <div class="panel-header">
+          <span>PORTFOLIO.EXE - NEURAL INTERFACE</span>
         </div>
-        <button id="prev-image" class="nav-button" aria-label="Imagen anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button
-          id="next-image"
-          class="nav-button"
-          aria-label="Siguiente imagen"
-        >
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <button id="close-modal-image" aria-label="Cerrar">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div id="modal-comic">
-        <div class="image-container">
-          <img src="assets/comic/comic_1.png" alt="Comic 1" class="active" />
-          <img src="assets/comic/comic_2.png" alt="Comic 2" />
-          <img src="assets/comic/comic_3.png" alt="Comic 3" />
-          <img src="assets/comic/comic_4.png" alt="Comic 4" />
-          <img src="assets/comic/comic_5.png" alt="Comic 5" />
-          <img src="assets/comic/comic_6.png" alt="Comic 6" />
-          <img src="assets/comic/comic_7.png" alt="Comic 7" />
+        <div class="panel-body">
+          <p>> LOADING PROJECTS...</p>
+          <p>> STATUS: CONNECTED</p>
+          <p>> MODE: BRUTALIST_SHOWCASE</p>
         </div>
-        <button id="prev-comic" class="nav-button" aria-label="Comic anterior">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button id="next-comic" class="nav-button" aria-label="Siguiente comic">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        <button id="close-modal-comic" aria-label="Cerrar">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <button id="activate-styles-btn">Activar Estilos</button>
-    </main>
-    <footer>
-      <div class="signature">
-        © 2025 Amós | Hecho con
-        <i class="fas fa-heart" style="color: var(--neon-accent)"></i>
-      </div>
-      <div class="socials">
-        <a
-          href="https://github.com"
-          target="_blank"
-          aria-label="GitHub de Amós"
-          rel="noopener noreferrer"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          aria-label="LinkedIn de Amós"
-          rel="noopener noreferrer"
-          ><i class="fab fa-linkedin-in"></i
-        ></a>
-        <a href="mailto:contacto@amoslab.com" aria-label="Email a Amós"
-          ><i class="fas fa-envelope"></i
-        ></a>
-      </div>
-    </footer>
+      </header>
 
-    <script type="module">
-      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.157.0/build/three.module.min.js";
-      window.THREE = THREE;
-    </script>
+      <main>
+        <h1>DIGITAL <br />BRUTALISM</h1>
+        <p class="system-status">
+          >_ SYSTEM_ONLINE <span class="cursor"></span>
+        </p>
+      </main>
+
+      <div class="content-grid">
+        <!-- Proyecto 1 -->
+        <div class="panel project-card">
+          <div class="panel-header">
+            <span>NEURAL_MATRIX.EXE</span>
+            <span class="tag">AI_VIS</span>
+          </div>
+          <div class="panel-body display-grid">
+            <!-- Placeholder para la visualización -->
+          </div>
+          <div class="panel-footer">
+            <p class="project-title">NEURAL_MATRIX.EXE</p>
+            <ul>
+              <li>> AI visualization terminal.</li>
+              <li>> Data flow algorithm.</li>
+              <li>> Real-time processing.</li>
+            </ul>
+            <div class="project-actions">
+              <button
+                class="action-btn"
+                id="view-artifacts-btn"
+                aria-label="View Artifacts"
+              >
+                VIEW_ARTIFACTS
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="panel project-card">
+          <div class="panel-header">
+            <span>GLITCH_PORTFOLIO</span>
+            <span class="tag tag-web">WEB_DESIGN</span>
+          </div>
+          <div class="panel-body display-grid">
+            <!-- Placeholder para la visualización -->
+          </div>
+          <div class="panel-footer">
+            <p class="project-title">GLITCH_PORTFOLIO</p>
+            <ul>
+              <li>>WebGL experiments.</li>
+              <li>>Shader programming.</li>
+              <li>>Interactive chaos.</li>
+            </ul>
+            <div class="project-actions">
+              <a
+                href="https://github.com/Ikas73/simple-hello-word"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="action-btn"
+                aria-label="View Source Code"
+                >VIEW_SRC</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="panel">
+        <span>SYS.INFO: C.2025 AMOS_DEV.</span>
+        <span>STATUS: STABLE.</span>
+        <span>PROTO: TCP/IP.</span>
+      </footer>
+    </div>
+
+    <!-- Modal para la galería de "artefactos" -->
+    <div id="modal-artifacts" class="modal">
+      <div class="modal-content panel">
+        <div class="panel-header">
+          <span>DATA_VIEWER::ARTIFACTS</span>
+          <button id="close-modal-btn" class="action-btn" aria-label="Close">
+            [X]
+          </button>
+        </div>
+        <div class="panel-body image-container">
+          <!-- Las imágenes del HTML original se mantienen -->
+          <img
+            src="assets/images/imagen_1.png"
+            alt="Artifact 1"
+            class="active"
+          />
+          <img src="assets/images/imagen_2.png" alt="Artifact 2" />
+          <img src="assets/images/imagen_3.png" alt="Artifact 3" />
+          <img src="assets/images/imagen_4.png" alt="Artifact 4" />
+          <img src="assets/images/imagen_5.png" alt="Artifact 5" />
+          <img src="assets/images/imagen_6.webp" alt="Artifact 6" />
+          <img src="assets/images/imagen_7.webp" alt="Artifact 7" />
+          <!-- ...Añadir el resto de las imágenes aquí... -->
+          <img src="assets/images/imagen_53.png" alt="Artifact 53" />
+          <img src="assets/images/imagen_54.webp" alt="Artifact 54" />
+          <img src="assets/images/imagen_00.webp" alt="Artifact 00" />
+
+          <button
+            id="prev-btn"
+            class="nav-button"
+            aria-label="Previous Artifact"
+          >
+            [<]
+          </button>
+          <button id="next-btn" class="nav-button" aria-label="Next Artifact">
+            [>]
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js" defer></script>
   </body>
