@@ -1,76 +1,103 @@
 # ¡Hola Mundo Espectacular! ✨ | Por Amós
 
-Una versión visualmente impactante y moderna del clásico "Hola Mundo", desarrollada como un ejercicio creativo y técnico. Este proyecto transforma una simple página HTML en una experiencia dinámica con efectos neón, partículas 3D interactivas y animaciones atractivas.
+Una versión moderna, interactiva y visualmente impactante del clásico "Hola Mundo". Este proyecto transforma una simple página HTML en una experiencia digital con efectos neón, partículas 3D, animaciones, galerías y un toque de creatividad.
 
-![Hola Mundo Espectacular Demo](assets/demo.gif)
+![Demo Hola Mundo Espectacular](assets/demo.gif)
 
-## Descripción
+---
 
-Este proyecto va más allá de un simple saludo. Incorpora técnicas modernas de desarrollo web para crear una landing page visualmente atractiva y memorable. Incluye:
+## 🚀 Descripción General
 
-- Un diseño oscuro con estética neón y futurista.
-- Un fondo dinámico con partículas 3D que reaccionan al movimiento del ratón.
-- Animaciones de texto sutiles pero efectivas.
-- Una característica interactiva sorpresa al hacer clic en el botón principal.
-- Un modo inicial "básico" que se transforma en la versión completa al activar los estilos.
+Esta landing page va más allá de un saludo tradicional. Incorpora técnicas modernas de desarrollo web para crear una experiencia memorable y dinámica:
 
-## Características Principales 🚀
+- **Diseño oscuro y neón** con estética futurista.
+- **Fondo animado de partículas 3D** usando Three.js, que reacciona al movimiento del cursor.
+- **Animaciones de texto** (glitch, aparición secuencial, efectos sutiles).
+- **Galería de imágenes** y **galería de cómic** en modales interactivos.
+- **Animación especial**: al hacer clic en "Descubre más", una nave cruza la pantalla.
+- **Modo básico/minimalista** al cargar, que se transforma en la versión completa al pulsar "Activar Estilos".
 
-- **HTML5 Semántico:** Estructura bien definida con etiquetas modernas.
-- **CSS3 Avanzado:**
-  - Diseño **Mobile-First** y responsivo usando Media Queries.
-  - Uso de **Variables CSS** (Custom Properties) para una fácil tematización.
-  - Layout con **Flexbox**.
-  - **Efecto Neón** vibrante logrado con `text-shadow`.
-  - **Glassmorphism** sutil en header/footer con `backdrop-filter`.
-  - Animaciones CSS (`@keyframes`) para texto, gradientes y la nave espacial.
-  - Transiciones suaves para interacciones (hover, etc.).
-- **JavaScript Interactivo:**
-  - **Partículas 3D con Three.js:** Fondo animado y reactivo al cursor.
-  - **Menú Hamburguesa** funcional para navegación móvil.
-  - **Animación de Texto:**
-    - Efecto "Glitch" sutil en el título al pasar el ratón.
-    - Aparición secuencial de palabras en el subtítulo.
-  - **Animación de Nave Espacial:** Al hacer clic en "Descubre más", una nave con estela cruza la pantalla. El botón se oculta temporalmente.
-  - **Activación de Estilos:** La página carga inicialmente con estilos mínimos y se transforma al hacer clic en "Activar Estilos".
-- **Fuentes y Iconos:**
-  - Uso de Google Fonts (Orbitron y Roboto Mono).
-  - Iconos de Font Awesome.
+---
 
-## Tecnologías Utilizadas 💻
+## ✨ Características Principales
 
-- HTML5
-- CSS3 (Variables, Flexbox, Animaciones, Media Queries, Glassmorphism)
-- JavaScript (ES6+, DOM Manipulation, Event Listeners)
-- [Three.js](https://threejs.org/) (Biblioteca para gráficos 3D/WebGL)
-- [Font Awesome](https://fontawesome.com/) (Iconos vectoriales)
-- [Google Fonts](https://fonts.google.com/)
+- **HTML5 Semántico**: Estructura clara y accesible.
+- **CSS3 Avanzado**:
+  - Diseño Mobile-First y responsive.
+  - Variables CSS para tematización sencilla.
+  - Flexbox para layout flexible.
+  - Efecto neón con `text-shadow`.
+  - Glassmorphism en header/footer con `backdrop-filter`.
+  - Animaciones CSS para texto, gradientes y elementos interactivos.
+  - Transiciones suaves en interacciones.
+- **JavaScript Moderno**:
+  - Fondo de partículas 3D con Three.js.
+  - Menú hamburguesa para navegación móvil.
+  - Efecto glitch en el título y animaciones de subtítulo.
+  - Galerías modales de imágenes y cómic, con navegación.
+  - Animación de nave espacial al pulsar "Descubre más".
+  - Activación dinámica de estilos avanzados.
+- **Fuentes e Iconos**:
+  - Google Fonts (Orbitron, Roboto Mono).
+  - Font Awesome para iconos.
 
-## ¿Cómo Ejecutarlo? ⚡
+---
 
-1.  Clona o descarga este repositorio:
-    ```bash
-    git clone [URL de tu repositorio]
-    ```
-    O descarga el archivo ZIP.
-2.  Navega hasta la carpeta del proyecto en tu terminal o explorador de archivos.
-3.  Abre el archivo `index.html` en tu navegador web preferido (se recomienda un navegador moderno compatible con WebGL para las partículas 3D).
-4.  ¡Haz clic en "Activar Estilos" y disfruta!
+## 🖼️ Galerías Interactivas
 
-## Estructura del Proyecto 📁
+- **Galería de Imágenes**: Accesible desde el botón "Ver Imagen". Permite navegar entre decenas de imágenes con controles.
+- **Galería de Cómic**: Accesible desde el botón "Comic Estelar". Visualiza una secuencia de viñetas tipo cómic.
+
+Ambas galerías se muestran en modales superpuestos y son navegables con botones de anterior/siguiente.
+
+---
+
+## ⚡ ¿Cómo Ejecutarlo?
+
+1. Clona o descarga este repositorio:
+   ```bash
+   git clone [URL de tu repositorio]
+   ```
+   O descarga el archivo ZIP.
+2. Navega a la carpeta del proyecto.
+3. Abre el archivo `index.html` en tu navegador web preferido (se recomienda uno moderno compatible con WebGL).
+4. Al cargar, verás la versión básica. Pulsa **"Activar Estilos"** para desbloquear la experiencia completa.
+5. Explora las galerías y animaciones usando los botones de la página.
+
+---
+
+## 📁 Estructura del Proyecto
 
 ```bash
-├── index.html # Archivo principal HTML
-├── style.css # Archivo de estilos CSS
-├── script.js # Archivo JavaScript de lógica JavaScript
-├── README.md # Este archivo
-
+├── index.html         # Archivo principal HTML
+├── style.css          # Estilos CSS
+├── script.js          # Lógica JavaScript
+├── assets/
+│   ├── demo.gif       # Demo animado
+│   ├── comic/         # Imágenes del cómic
+│   └── images/        # Imágenes de la galería
+└── README.md          # Este archivo
 ```
 
-## Créditos 🙏
+---
 
-- Ejercicio realizado por: **Amós**
-  
-## Licencia 📄
+## 💻 Tecnologías Utilizadas
 
-Este proyecto se distribuye bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles (si decides añadir uno).
+- **HTML5**
+- **CSS3** (Variables, Flexbox, Animaciones, Media Queries, Glassmorphism)
+- **JavaScript** (ES6+, DOM, Eventos)
+- [Three.js](https://threejs.org/) (gráficos 3D/WebGL)
+- [Font Awesome](https://fontawesome.com/) (iconos)
+- [Google Fonts](https://fonts.google.com/)
+
+---
+
+## 🙏 Créditos
+
+Ejercicio realizado por: **Amós**
+
+---
+
+## 📄 Licencia
+
+Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
