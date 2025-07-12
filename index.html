@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio de diseño web con estética Neo-Brutalista. Raw. Uncompromising. Digital."
+      content="Digital Brutalism: A Raw, Uncompromising, Digital Interface."
     />
     <meta name="theme-color" content="#00FF00" />
-    <title>SYSTEM::NEO_BRUTALISM</title>
+    <title>SYSTEM::NEO_BRUTALISM_V4_MATRIX</title>
 
-    <!-- Fuente Monoespaciada para la estética de terminal -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,109 +18,69 @@
     />
 
     <link rel="stylesheet" href="style.css" />
-    <!-- Icono puede ser un simple cuadrado verde -->
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2300ff00%22/></svg>"
     />
   </head>
   <body>
-    <div class="main-container">
-      <header class="panel">
-        <div class="panel-header">
-          <span>PORTFOLIO.EXE - NEURAL INTERFACE</span>
-        </div>
+    <header class="grid-header panel">
+      <span>>_ [SYSTEM_ACTIVE]</span>
+    </header>
+
+    <main class="grid-main">
+      <h1>DIGITAL<br />BRUTALISM</h1>
+      <p class="subtitle">Raw. Uncompromising. Digital.</p>
+      <div class="main-actions">
+        <button id="view-artifacts-btn" class="action-btn">
+          ./view_artifacts
+        </button>
+        <button id="view-comic-btn" class="action-btn">./read_comic_log</button>
+        <button id="discover-more-btn" class="action-btn special-action">
+          ./initiate_matrix
+        </button>
+      </div>
+    </main>
+
+    <aside class="grid-sidebar">
+      <div class="panel status-panel">
+        <div class="panel-header"><span>[STATUS]</span></div>
         <div class="panel-body">
-          <p>> LOADING PROJECTS...</p>
-          <p>> STATUS: CONNECTED</p>
-          <p>> MODE: BRUTALIST_SHOWCASE</p>
-        </div>
-      </header>
-
-      <main>
-        <h1>DIGITAL <br />BRUTALISM</h1>
-        <p class="system-status">
-          >_ SYSTEM_ONLINE <span class="cursor"></span>
-        </p>
-      </main>
-
-      <div class="content-grid">
-        <!-- Proyecto 1 -->
-        <div class="panel project-card">
-          <div class="panel-header">
-            <span>NEURAL_MATRIX.EXE</span>
-            <span class="tag">AI_VIS</span>
-          </div>
-          <div class="panel-body display-grid">
-            <!-- Placeholder para la visualización -->
-          </div>
-          <div class="panel-footer">
-            <p class="project-title">NEURAL_MATRIX.EXE</p>
-            <ul>
-              <li>> AI visualization terminal.</li>
-              <li>> Data flow algorithm.</li>
-              <li>> Real-time processing.</li>
-            </ul>
-            <div class="project-actions">
-              <button
-                class="action-btn"
-                id="view-artifacts-btn"
-                aria-label="View Artifacts"
-              >
-                VIEW_ARTIFACTS
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Proyecto 2 -->
-        <div class="panel project-card">
-          <div class="panel-header">
-            <span>GLITCH_PORTFOLIO</span>
-            <span class="tag tag-web">WEB_DESIGN</span>
-          </div>
-          <div class="panel-body display-grid">
-            <!-- Placeholder para la visualización -->
-          </div>
-          <div class="panel-footer">
-            <p class="project-title">GLITCH_PORTFOLIO</p>
-            <ul>
-              <li>>WebGL experiments.</li>
-              <li>>Shader programming.</li>
-              <li>>Interactive chaos.</li>
-            </ul>
-            <div class="project-actions">
-              <a
-                href="https://github.com/Ikas73/simple-hello-word"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="action-btn"
-                aria-label="View Source Code"
-                >VIEW_SRC</a
-              >
-            </div>
-          </div>
+          <p>AESTHETIC:     BRUTAL</p>
+          <p>DESIGN:        FUNCTIONAL</p>
+          <p>CONFORMITY:    <span class="rejected">REJECTED</span></p>
+          <p>REBELLION:     ACTIVE ◈</p>
         </div>
       </div>
+    </aside>
 
-      <footer class="panel">
-        <span>SYS.INFO: C.2025 AMOS_DEV.</span>
-        <span>STATUS: STABLE.</span>
-        <span>PROTO: TCP/IP.</span>
-      </footer>
+    <div class="grid-terminal panel">
+      <p>
+        > SYSTEM KERNEL LOADED. AWAITING COMMANDS.<span class="cursor"></span>
+      </p>
     </div>
 
-    <!-- Modal para la galería de "artefactos" -->
+    <div class="grid-warning panel warning-panel">
+      <div class="panel-header"><span>[WARNING]</span></div>
+      <div class="panel-body">
+        <p>High voltage interface. May cause aesthetic shock.</p>
+      </div>
+    </div>
+
+    <!-- Modal para Artefactos con tus imágenes específicas -->
     <div id="modal-artifacts" class="modal">
       <div class="modal-content panel">
         <div class="panel-header">
           <span>DATA_VIEWER::ARTIFACTS</span>
-          <button id="close-modal-btn" class="action-btn" aria-label="Close">
+          <button
+            id="close-artifacts-btn"
+            class="action-btn"
+            aria-label="Close"
+          >
             [X]
           </button>
         </div>
         <div class="panel-body image-container">
-          <!-- Las imágenes del HTML original se mantienen -->
           <img
             src="assets/images/imagen_1.png"
             alt="Artifact 1"
@@ -133,23 +92,116 @@
           <img src="assets/images/imagen_5.png" alt="Artifact 5" />
           <img src="assets/images/imagen_6.webp" alt="Artifact 6" />
           <img src="assets/images/imagen_7.webp" alt="Artifact 7" />
-          <!-- ...Añadir el resto de las imágenes aquí... -->
+          <img src="assets/images/imagen_8.webp" alt="Artifact 8" />
+          <img src="assets/images/imagen_9.webp" alt="Artifact 9" />
+          <img src="assets/images/imagen_10.png" alt="Artifact 10" />
+          <img src="assets/images/imagen_11.png" alt="Artifact 11" />
+          <img src="assets/images/imagen_12.png" alt="Artifact 12" />
+          <img src="assets/images/imagen_13.png" alt="Artifact 13" />
+          <img src="assets/images/imagen_14.png" alt="Artifact 14" />
+          <img src="assets/images/imagen_15.webp" alt="Artifact 15" />
+          <img src="assets/images/imagen_16.webp" alt="Artifact 16" />
+          <img src="assets/images/imagen_17.webp" alt="Artifact 17" />
+          <img src="assets/images/imagen_18.webp" alt="Artifact 18" />
+          <img src="assets/images/imagen_19.webp" alt="Artifact 19" />
+          <img src="assets/images/imagen_20.png" alt="Artifact 20" />
+          <img src="assets/images/imagen_21.webp" alt="Artifact 21" />
+          <img src="assets/images/imagen_22.webp" alt="Artifact 22" />
+          <img src="assets/images/imagen_23.webp" alt="Artifact 23" />
+          <img src="assets/images/imagen_24.webp" alt="Artifact 24" />
+          <img src="assets/images/imagen_25.webp" alt="Artifact 25" />
+          <img src="assets/images/imagen_26.webp" alt="Artifact 26" />
+          <img src="assets/images/imagen_27.webp" alt="Artifact 27" />
+          <img src="assets/images/imagen_28.webp" alt="Artifact 28" />
+          <img src="assets/images/imagen_29.webp" alt="Artifact 29" />
+          <img src="assets/images/imagen_30.webp" alt="Artifact 30" />
+          <img src="assets/images/imagen_31.webp" alt="Artifact 31" />
+          <img src="assets/images/imagen_32.webp" alt="Artifact 32" />
+          <img src="assets/images/imagen_33.webp" alt="Artifact 33" />
+          <img src="assets/images/imagen_34.webp" alt="Artifact 34" />
+          <img src="assets/images/imagen_35.webp" alt="Artifact 35" />
+          <img src="assets/images/imagen_36.webp" alt="Artifact 36" />
+          <img src="assets/images/imagen_37.webp" alt="Artifact 37" />
+          <img src="assets/images/imagen_38.webp" alt="Artifact 38" />
+          <img src="assets/images/imagen_39.webp" alt="Artifact 39" />
+          <img src="assets/images/imagen_40.webp" alt="Artifact 40" />
+          <img src="assets/images/imagen_41.webp" alt="Artifact 41" />
+          <img src="assets/images/imagen_42.webp" alt="Artifact 42" />
+          <img src="assets/images/imagen_43.webp" alt="Artifact 43" />
+          <img src="assets/images/imagen_44.webp" alt="Artifact 44" />
+          <img src="assets/images/imagen_45.webp" alt="Artifact 45" />
+          <img src="assets/images/imagen_46.webp" alt="Artifact 46" />
+          <img src="assets/images/imagen_47.webp" alt="Artifact 47" />
+          <img src="assets/images/imagen_48.webp" alt="Artifact 48" />
+          <img src="assets/images/imagen_49.webp" alt="Artifact 49" />
+          <img src="assets/images/imagen_50.webp" alt="Artifact 50" />
+          <img src="assets/images/imagen_51.webp" alt="Artifact 51" />
+          <img src="assets/images/imagen_52.webp" alt="Artifact 52" />
           <img src="assets/images/imagen_53.png" alt="Artifact 53" />
           <img src="assets/images/imagen_54.webp" alt="Artifact 54" />
+          <img src="assets/images/imagen_55.webp" alt="Artifact 55" />
           <img src="assets/images/imagen_00.webp" alt="Artifact 00" />
-
           <button
-            id="prev-btn"
+            id="prev-artifacts-btn"
             class="nav-button"
             aria-label="Previous Artifact"
           >
             [<]
           </button>
-          <button id="next-btn" class="nav-button" aria-label="Next Artifact">
+          <button
+            id="next-artifacts-btn"
+            class="nav-button"
+            aria-label="Next Artifact"
+          >
             [>]
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- Modal para Cómic con tus imágenes específicas -->
+    <div id="modal-comic" class="modal">
+      <div class="modal-content panel">
+        <div class="panel-header">
+          <span>DATA_VIEWER::COMIC_LOG</span>
+          <button id="close-comic-btn" class="action-btn" aria-label="Close">
+            [X]
+          </button>
+        </div>
+        <div class="panel-body image-container">
+          <img
+            src="assets/comic/comic_1.png"
+            alt="Comic Panel 1"
+            class="active"
+          />
+          <img src="assets/comic/comic_2.png" alt="Comic Panel 2" />
+          <img src="assets/comic/comic_3.png" alt="Comic Panel 3" />
+          <img src="assets/comic/comic_4.png" alt="Comic Panel 4" />
+          <img src="assets/comic/comic_5.png" alt="Comic Panel 5" />
+          <img src="assets/comic/comic_6.png" alt="Comic Panel 6" />
+          <img src="assets/comic/comic_7.png" alt="Comic Panel 7" />
+
+          <button
+            id="prev-comic-btn"
+            class="nav-button"
+            aria-label="Previous Panel"
+          >
+            [<]
+          </button>
+          <button
+            id="next-comic-btn"
+            class="nav-button"
+            aria-label="Next Panel"
+          >
+            [>]
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay para el efecto Matrix -->
+    <div id="effect-overlay">
+      <canvas id="matrix-canvas"></canvas>
     </div>
 
     <script src="script.js" defer></script>

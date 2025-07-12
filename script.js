@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Función para manejar el carrusel de artefactos (imágenes)
+  /**
+   * Función reutilizable para configurar un carrusel en un modal.
+   */
   function setupArtifactCarousel(
     modalId,
     showBtnId,
@@ -14,18 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById(nextBtnId);
 
     if (!modal || !showBtn || !closeBtn || !prevBtn || !nextBtn) {
-      console.error(
-        "BRUTAL_ERROR: Uno o más elementos del modal no fueron encontrados."
-      );
+      console.error(`BRUTAL_ERROR: Faltan elementos para el modal ${modalId}.`);
       return;
     }
 
     const images = modal.querySelectorAll(".image-container img");
+    if (images.length === 0) return; // No hacer nada si no hay imágenes
+
     let currentIndex = 0;
 
     function showImage(index) {
       images.forEach((img) => img.classList.remove("active"));
-      // Asegurarse de que el índice sea cíclico y válido
       currentIndex = (index + images.length) % images.length;
       images[currentIndex].classList.add("active");
     }
@@ -36,53 +37,127 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.classList.add("active");
     });
 
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-    });
+    closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+    prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
+    nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
 
-    prevBtn.addEventListener("click", () => {
-      showImage(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener("click", () => {
-      showImage(currentIndex + 1);
-    });
-
-    // Cerrar al hacer clic en el fondo oscuro
     modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.classList.remove("active");
-      }
+      if (e.target === modal) modal.classList.remove("active");
     });
 
-    // Navegación por teclado
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("active")) return;
-
       switch (e.key) {
         case "ArrowLeft":
           e.preventDefault();
-          showImage(currentIndex - 1);
+          prevBtn.click();
           break;
         case "ArrowRight":
           e.preventDefault();
-          showImage(currentIndex + 1);
+          nextBtn.click();
           break;
         case "Escape":
-          modal.classList.remove("active");
+          closeBtn.click();
           break;
       }
     });
   }
 
-  // Inicializar el carrusel de artefactos
+  // --- INICIALIZAR MODALES ---
   setupArtifactCarousel(
     "modal-artifacts",
     "view-artifacts-btn",
-    "close-modal-btn",
-    "prev-btn",
-    "next-btn"
+    "close-artifacts-btn",
+    "prev-artifacts-btn",
+    "next-artifacts-btn"
   );
 
-  console.log("SYSTEM KERNEL LOADED. AWAITING COMMANDS.");
+  setupArtifactCarousel(
+    "modal-comic",
+    "view-comic-btn",
+    "close-comic-btn",
+    "prev-comic-btn",
+    "next-comic-btn"
+  );
+
+  // --- LÓGICA DEL EFECTO MATRIX ESPECTACULAR ---
+  const discoverMoreBtn = document.getElementById("discover-more-btn");
+  const effectOverlay = document.getElementById("effect-overlay");
+  const canvas = document.getElementById("matrix-canvas");
+
+  if (discoverMoreBtn && effectOverlay && canvas) {
+    const ctx = canvas.getContext("2d");
+    let animationFrameId;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    const katakana =
+      "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン";
+    const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const nums = "0123456789";
+    const alphabet = katakana + latin + nums;
+
+    const fontSize = 16;
+    let columns = Math.floor(canvas.width / fontSize);
+
+    let drops = [];
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      columns = Math.floor(canvas.width / fontSize);
+      drops = [];
+      for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+      }
+    });
+
+    const drawMatrix = () => {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00FF00";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = alphabet.charAt(
+          Math.floor(Math.random() * alphabet.length)
+        );
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    };
+
+    const toggleMatrixEffect = (start) => {
+      if (start) {
+        effectOverlay.classList.add("active");
+        animationFrameId = setInterval(drawMatrix, 33);
+      } else {
+        effectOverlay.classList.remove("active");
+        clearInterval(animationFrameId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    };
+
+    discoverMoreBtn.addEventListener("click", () => {
+      if (effectOverlay.classList.contains("active")) return;
+      toggleMatrixEffect(true);
+      setTimeout(() => toggleMatrixEffect(false), 5000);
+    });
+  }
+
+  console.log(
+    "SYSTEM V4 KERNEL LOADED. MATRIX MODULE INITIALIZED. AWAITING COMMANDS."
+  );
 });
