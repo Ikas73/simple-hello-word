@@ -256,11 +256,13 @@ body {
   color: var(--brutal-bg);
 }
 #prev-artifacts-btn,
-#prev-comic-btn {
+#prev-comic-btn,
+#prev-chaotic-btn {
   left: 1rem;
 }
 #next-artifacts-btn,
-#next-comic-btn {
+#next-comic-btn,
+#next-chaotic-btn {
   right: 1rem;
 }
 /* === ESTILOS PARA EL BOTÓN DE CIERRE CON ICONO 'X' === */

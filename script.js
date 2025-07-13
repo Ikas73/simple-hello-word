@@ -15,8 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
 
+    // Esta comprobación detecta el error, ¡buen trabajo al incluirla!
     if (!modal || !showBtn || !closeBtn || !prevBtn || !nextBtn) {
-      console.error(`BRUTAL_ERROR: Faltan elementos para el modal ${modalId}.`);
+      console.error(
+        `BRUTAL_ERROR: Faltan elementos para el modal ${modalId}. El botón de apertura con ID "${showBtnId}" podría ser el culpable.`
+      );
       return;
     }
 
@@ -62,12 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // --- NUEVO: LÓGICA DE SWIPE PARA MÓVILES ---
     const imageContainer = modal.querySelector(".image-container");
     if (imageContainer) {
       let touchStartX = 0;
       let touchEndX = 0;
-      const minSwipeDistance = 50; // Mínimo de píxeles para considerar un swipe
+      const minSwipeDistance = 50;
 
       imageContainer.addEventListener(
         "touchstart",
@@ -75,17 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
           touchStartX = e.changedTouches[0].clientX;
         },
         { passive: true }
-      ); // passive:true mejora el rendimiento
+      );
 
       imageContainer.addEventListener("touchend", (e) => {
         touchEndX = e.changedTouches[0].clientX;
         const swipeDistance = touchEndX - touchStartX;
 
         if (swipeDistance > minSwipeDistance) {
-          // Swipe hacia la derecha -> Imagen anterior
           prevBtn.click();
         } else if (swipeDistance < -minSwipeDistance) {
-          // Swipe hacia la izquierda -> Imagen siguiente
           nextBtn.click();
         }
       });
@@ -107,6 +107,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "close-comic-btn",
     "prev-comic-btn",
     "next-comic-btn"
+  );
+
+  // --- CORRECCIÓN AQUÍ ---
+  // El ID del botón de apertura debe coincidir con el del HTML: "view-chaotic-party-btn"
+  setupArtifactCarousel(
+    "modal-chaotic",
+    "view-chaotic-party-btn", // <-- CORREGIDO
+    "close-chaotic-btn",
+    "prev-chaotic-btn",
+    "next-chaotic-btn"
   );
 
   // --- LÓGICA DEL EFECTO MATRIX ESPECTACULAR ---
