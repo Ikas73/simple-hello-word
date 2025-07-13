@@ -61,6 +61,35 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
       }
     });
+
+    // --- NUEVO: LÓGICA DE SWIPE PARA MÓVILES ---
+    const imageContainer = modal.querySelector(".image-container");
+    if (imageContainer) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const minSwipeDistance = 50; // Mínimo de píxeles para considerar un swipe
+
+      imageContainer.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+        },
+        { passive: true }
+      ); // passive:true mejora el rendimiento
+
+      imageContainer.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (swipeDistance > minSwipeDistance) {
+          // Swipe hacia la derecha -> Imagen anterior
+          prevBtn.click();
+        } else if (swipeDistance < -minSwipeDistance) {
+          // Swipe hacia la izquierda -> Imagen siguiente
+          nextBtn.click();
+        }
+      });
+    }
   }
 
   // --- INICIALIZAR MODALES ---
